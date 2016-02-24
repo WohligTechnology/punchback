@@ -61,18 +61,18 @@ return $return;
 }
 public function reviewSubmit($duration,$teamsize,$lastlocation,$nextlocation,$knowssmash,$hostwithsmash,$name,$email,$phone,$designation,$organization)
 {
-  if($name=="")
+  if($name!="" && $email !="")
   {
-    $object = new stdClass();
-    $object->value = false;
-    return $object;
-  }
-  else {
     $data=array("duration" => $duration,"teamsize" => $teamsize,"lastlocation" => $lastlocation,"nextlocation" => $nextlocation,"knowssmash" => $knowssmash,"hostwithsmash" => $hostwithsmash,"name" => $name,"email" => $email,"phone" => $phone,"designation" => $designation,"organization" => $organization);
     $query=$this->db->insert( "smash_review", $data );
     $id=$this->db->insert_id();
     $object = new stdClass();
     $object->value = true;
+    return $object;
+  }
+  else {
+    $object = new stdClass();
+    $object->value = false;
     return $object;
   }
 }
