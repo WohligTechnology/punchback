@@ -76,4 +76,24 @@ public function reviewSubmit($duration,$teamsize,$lastlocation,$nextlocation,$kn
     return $object;
   }
 }
+
+function exportreviewcsv()
+{
+$this->load->dbutil();
+$query=$this->db->query("SELECT * FROM `smash_review`");
+
+   $content= $this->dbutil->csv_from_result($query);
+    //$data = 'Some file data';
+$timestamp=new DateTime();
+    $timestamp=$timestamp->format('Y-m-d_H.i.s');
+    if ( ! write_file("./uploads/review_$timestamp.csv", $content))
+    {
+         echo 'Unable to write the file';
+    }
+    else
+    {
+        redirect(base_url("uploads/review_$timestamp.csv"), 'refresh');
+         echo 'File written!';
+    }
+}
 }

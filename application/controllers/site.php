@@ -20,6 +20,16 @@ class Site extends CI_Controller
 		if(!in_array($accesslevel,$access))
 			redirect( base_url() . 'index.php/site?alerterror=You do not have access to this page. ', 'refresh' );
 	}
+
+	public function exportreviewcsv()
+{
+	$access = array("1");
+	$this->checkaccess($access);
+	$this->review_model->exportreviewcsv();
+			$data['redirect']="site/viewreview";
+			$this->load->view("redirect",$data);
+}
+
     public function getOrderingDone()
     {
         $orderby=$this->input->get("orderby");

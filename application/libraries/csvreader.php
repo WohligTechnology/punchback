@@ -2,7 +2,7 @@
 
 class CSVReader {
 
-    var $fields;            /** columns names retrieved after parsing */ 
+    var $fields;            /** columns names retrieved after parsing */
     var $separator = ';';    /** separator used to explode each line */
     var $enclosure = '"';    /** enclosure used to decorate each field */
 
@@ -18,7 +18,7 @@ class CSVReader {
         $keys   =   $this->escape_string($keys_values);
 
         $i  =   1;
-        while( ($row = fgetcsv($file, $this->max_row_size, $this->separator, $this->enclosure)) != false ) {            
+        while( ($row = fgetcsv($file, $this->max_row_size, $this->separator, $this->enclosure)) != false ) {
             if( $row != null ) { // skip empty lines
                 $values =   explode(',',$row[0]);
                 if(count($keys) == count($values)){
@@ -46,6 +46,5 @@ class CSVReader {
             $result[]   =   str_replace('"', '',$row);
         }
         return $result;
-    }   
+    }
 }
-?> 

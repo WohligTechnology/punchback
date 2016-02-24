@@ -1,3 +1,7 @@
+<div class="row" style="padding:1% 0">
+
+	    <div><a class="btn btn-primary" href="<?php echo site_url('site/exportreviewcsv'); ?>"target="_blank"><i class="icon-plus"></i>Export to CSV </a></div>
+</div>
 <div class="row">
 <div class="col s12">
 <div class="row">
